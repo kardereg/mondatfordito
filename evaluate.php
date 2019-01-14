@@ -1,7 +1,6 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
 session_start();
-
 echo '<html>
 <head>
     <title>Evaluate</title>
@@ -10,8 +9,6 @@ echo '<html>
 </head>
 <body>
 ';
-
-
 function renderLine($column1, $column2)
 {
     echo "<tr>";
@@ -24,7 +21,6 @@ echo 'Hungarian: ' . $_POST["hungarian"] . '<br>';
 echo 'Your solution: ' . $_POST["english"] . '<br>';
 echo 'Correct solution: ' . $_SESSION['row_english'] . '<br>';
 */
-
 $row = [];
 if ( $_GET["id"] ) {
     $id = $_GET["id"];
@@ -34,12 +30,9 @@ if ( $_GET["id"] ) {
         $posted_english = "";
     }
     include('connect-db.php');
-
     $connection->set_charset("utf8");
-
     $result = mysqli_query($connection,"SELECT * FROM mondatok WHERE id = $id");
     $row = mysqli_fetch_array($result);
-
     mysqli_close($connection);
     
     echo "<table border='1' cellpadding='10'>";
@@ -54,12 +47,9 @@ if ( $_GET["id"] ) {
     echo '<br>';
     
     echo '<input type="submit" name="next" value="Try next!" style="height:25px; width:100px" onClick="window.location=\'start.php\';"/>';
-
 } else {
     echo "ERROR...id is missing!";
 }
-
-
 echo '
 </body>
 </html>
