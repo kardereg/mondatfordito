@@ -36,7 +36,7 @@ if ( $_GET["id"] ) {
     $row = mysqli_fetch_array($result);
     mysqli_close($connection);
     
-    echo $row["category"] . "<br>";
+    echo $row["category"] . " (" . $row["id"] . ") <br>";
     echo "<table border='1' cellpadding='10'>";
     renderLine(' Hungarian: ', $row["hungarian"]);
     renderLine(' Your solution: ', $posted_english);
